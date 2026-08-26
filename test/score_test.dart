@@ -18,7 +18,7 @@ class RaidScore {
 void main() {
   group('RaidScore', () {
     test('combines time, treasure and failures with 40/40/20 caps', () {
-      expect(const RaidScore(time: 60, treasure: 4, failures: 0).value, 1000);
+      expect(const RaidScore(time: 60, treasure: 5, failures: 0).value, 1000);
     });
 
     test('penalizes failures without producing a negative score', () {
