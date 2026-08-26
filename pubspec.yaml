@@ -20,5 +20,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - visual_assets/
 
 # Graffiti Ghosts deliberately uses only Dart and Flutter SDK packages in the MVP.

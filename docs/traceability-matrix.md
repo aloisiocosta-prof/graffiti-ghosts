@@ -44,3 +44,23 @@
 | Native-only MVP boundary | C1, C2, C3 | Component, Package, Deployment, Profile |
 | SOLID, ports and adapters | C2, C3, C4 | Component, Class, Package, Profile |
 | TDD and spec-driven workflow | C3, C4 | Activity, Interaction Overview, Sequence |
+
+## Implementation Traceability — Alignment Increment
+
+| Requirement / scenario | Implementation | Tests / evidence | Status |
+|---|---|---|---|
+| `RAID-OUTCOME-001` / `AC-003` | `RaidService.triggerCapture`, `restartWithoutSecondChance` | `test/domain/raid_services_test.dart` | IMPLEMENTED; CI validation required |
+| `RAID-OUTCOME-002` / `AC-002` | `RaidService.move`, `RaidPhase.chasing` | `test/domain/raid_services_test.dart`; chase widget test | IMPLEMENTED; playtest required |
+| `RAID-OUTCOME-003` / `AC-002` | `RaidService.selectEscapeRoute`; chase banner | Domain + widget tests | IMPLEMENTED; route tuning open |
+| `RAID-OUTCOME-004` / `AC-004` | `RaidService.continueWithSecondChance` | Domain test for checkpoint and penalties | IMPLEMENTED; ad/provider integration deferred |
+| `GHOST-SCORE-001` / `AC-006` | `GhostScoreService`; `ScoreBreakdown` | Domain score tests; result widget | IMPLEMENTED; normalization tuning open |
+| `GHOST-SCORE-002` / `AC-007` | `RaidController.acceptEconomicBonus` and reward boundary | Result UI copy; score API has no economic-bonus input | IMPLEMENTED as simulation; provider integration deferred |
+| `GRAFFITI-001` / `AC-005` | One-charge `activateGraffiti` use case | Domain graffiti test; HUD button and keyboard `G` | IMPLEMENTED; cooldown/duration tuning open |
+| `GRAFFITI-002` / `AC-005` | Secret route, shortcut platform, altered trap flags and painter | Domain graffiti test; route legend and scene | IMPLEMENTED; authored route graph remains open |
+| `GHOST-REPLAY-001` / `AC-006` | Ghost benchmark state and silhouette painter; ghost asset manifest | Widget result/raid presentation; asset mapping | PARTIAL: playback persistence remains open |
+| Visual asset inventory | `AssetManifest`, `pubspec.yaml`, `docs/asset-traceability.md` | Repository asset inventory | IMPLEMENTED with explicit missing-path gaps |
+| Accessibility gate | Semantics labels, large controls, text/icon redundancy, keyboard controls | Widget semantics test | PARTIAL; contrast and device audit required |
+
+## Status legend
+
+`IMPLEMENTED` means the behavior exists in the current code path and has focused automated coverage. `PARTIAL` means the documented boundary is represented but an upstream decision, asset, provider, or platform validation step remains open. `VALIDATION REQUIRED` is reserved for evidence that cannot be truthfully claimed without CI, a device, or a real playtest.

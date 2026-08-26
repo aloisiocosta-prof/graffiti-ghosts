@@ -43,3 +43,28 @@
 3. Should the game focus on precision platforming, automatic running, trap avoidance, puzzle-platforming, stealth, competitive raids, or a hybrid?
 4. What is the intended session length: under 2 minutes, 3–5 minutes, 5–10 minutes, or longer?
 5. Is the game single-player, asynchronous competitive, real-time multiplayer, or undecided?
+
+## Implementation Alignment — 2026-08-26
+
+The first alignment increment replaces the single progress mock with a playable Flutter vertical slice. The implementation now contains a selection screen, deterministic raid state transitions, jump/move/wall-grab/slide controls, graffiti route/platform/trap effects, detection and chase, alternative escape, theft, extraction, ghost score breakdown, optional economic bonus boundary, result flow, and hideout progression.
+
+| Classification | Record |
+|---|---|
+| `[SOURCE FACT]` | The GDD core loop is `Infiltrate → Stealth/Acrobatics → Steal → Escape → Ghost Comparison → Upgrade/Retry`. |
+| `[CLIENT DECISION]` | The project targets Android and Web/Wasm, with short single-player stealth raids and urban-fantasy direction. |
+| `[AGENT RECOMMENDATION]` | Use `CustomPainter` plus official Flutter widgets for the native-only MVP, with domain state separated from presentation. |
+| `[IMPLEMENTED]` | `lib/domain`, `lib/application`, `lib/core`, and `lib/presentation` now follow the documented dependency direction. |
+| `[VALIDATION REQUIRED]` | Flutter analyze, unit/widget tests, Android build, Web/Wasm build, visual readability, and real-device gameplay evidence require CI or a Flutter-enabled environment. |
+| `[RISK]` | The current repository lacks exact production files for several inventory paths; see `docs/asset-traceability.md`. |
+
+## Decision Log Addendum
+
+| Decision ID | Decision | Reason | Source | Alternatives | Impact | Status |
+|---|---|---|---|---|---|---|
+| `D-014` | The native-only MVP uses Flutter widgets plus `CustomPainter` for the authored fortress scene and official input/accessibility APIs. | Keeps the vertical slice package-free while supporting Web/Wasm and Android. | `[AGENT RECOMMENDATION]` based on `T-001` | External game engine; package-based renderer | Defines presentation implementation and keeps gameplay rules in the domain | PROVISIONAL; platform validation required |
+| `D-015` | The repository's existing `assets/` and `visual_assets/` families are loaded through a central asset manifest. | Prevents undocumented asset paths and makes GDD-to-code mapping reviewable. | `docs/visual-style-guide.md`; `docs/asset-traceability.md` | Scatter paths across widgets; regenerate all art | Makes approved references visible while preserving explicit inventory gaps | IMPLEMENTED |
+| `D-016` | The optional bonus is represented as an economic reward boundary and never changes the competitive score. | Required by `GHOST-SCORE-002` and the monetization boundary. | `docs/core-loop-design.md` | Direct score multiplier; forced ad | Keeps monetization separate from mastery score | IMPLEMENTED |
+
+## Open Questions
+
+The following remain unresolved and must not be silently converted into product decisions: exact score normalization and tie-breaking, persistence strategy, bundled versus local ghost replay storage, Android demo device, production icon pack, exact route graph authored for the fortress, and provider implementation for optional advertisements. These are tracked by the existing technical decisions and issues `#17` through `#20`.

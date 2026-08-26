@@ -15,3 +15,10 @@ This registry links implementation work to GitHub Issues and keeps the MVP trace
 | PR-009 | #12 | Record complete PR history | Planned |
 
 Every future pull request must include the corresponding Issue number in its title or body and must use `Closes #N` or `Refs #N`. The registry is a planning artifact; GitHub Issues and pull requests remain the authoritative execution records.
+
+| PR-010 | #17 | Align playable raid vertical slice with the GDD gameplay contract | In progress on `feature/17-gdd-raid-alignment` |
+| PR-011 | #18 | Integrate documented visual asset families and asset manifest | Planned |
+| PR-012 | #19 | Establish Clean Architecture and deterministic domain services | Included in PR-010 increment |
+| PR-013 | #20 | Validate GDD acceptance scenarios, accessibility and platform evidence | Planned |
+
+The current implementation increment uses PR-010 as the vertical-slice delivery. Issues #18–#20 remain explicit follow-up backlog items where additional production assets, platform evidence, or broader validation are required.
