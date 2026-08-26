@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Cloudflare Pages build entrypoint for Graffiti Ghosts.
+# Cloudflare Workers build entrypoint for Graffiti Ghosts.
 # Override FLUTTER_VERSION when the project intentionally upgrades Flutter.
 FLUTTER_VERSION="${FLUTTER_VERSION:-3.35.2}"
 FLUTTER_ROOT="${FLUTTER_ROOT:-${HOME}/flutter}"
@@ -21,18 +21,9 @@ flutter --version
 flutter pub get
 flutter build web --wasm --release --base-href "${FLUTTER_BASE_HREF}"
 
-# Cloudflare Pages reads this file from the deploy output directory.
-# These headers are required before Skwasm can use WebAssembly threads.
-cat > build/web/_headers <<'HEADERS'
-/*
-  Cross-Origin-Opener-Policy: same-origin
-  Cross-Origin-Embedder-Policy: require-corp
-  Cross-Origin-Resource-Policy: same-origin
-HEADERS
-
 # Fail early if Flutter did not produce the expected Wasm artifact.
 test -s build/web/main.dart.wasm
 test -s build/web/flutter_bootstrap.js
 
-echo "Cloudflare Pages artifact ready: build/web"
+echo "Cloudflare Workers artifact ready: build/web"
 echo "crossOriginIsolated requires the deployed response headers to be active."
