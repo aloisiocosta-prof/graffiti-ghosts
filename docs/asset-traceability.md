@@ -21,7 +21,7 @@ This document records how the visual assets described by `docs/visual-style-guid
 
 ## Asset loading contract
 
-All files under `assets/` and `visual_assets/` are declared in `pubspec.yaml`. The application references them through `lib/core/config/asset_manifest.dart` rather than scattering string paths across widgets. Missing exact inventory paths are not silently treated as final production assets; they remain explicit validation items.
+The runtime declares `assets/` plus the three visual files currently used by the selection, raid and hideout screens in `pubspec.yaml`. The remaining concept sheets stay in the repository as design references without entering the runtime bundle. The application references runtime assets through `lib/core/config/asset_manifest.dart` rather than scattering string paths across widgets. Missing exact inventory paths are not silently treated as final production assets; they remain explicit validation items.
 
 ## Readability acceptance
 
