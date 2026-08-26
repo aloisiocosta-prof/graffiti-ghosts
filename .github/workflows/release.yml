@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Tag or commit to release'
+        required: true
+        default: 'v0.1.0'
 
 permissions:
   contents: write
