@@ -36,9 +36,9 @@ class RaidScreen extends StatefulWidget {
 
 class _RaidScreenState extends State<RaidScreen> {
   double _progress = 0.18;
-  double _ghostProgress = 0.14;
+  final double _ghostProgress = 0.14;
   int _treasure = 2;
-  int _failures = 0;
+  final int _failures = 0;
   int _time = 47;
   bool _chase = false;
   bool _graffitiReady = true;
@@ -158,7 +158,7 @@ class _RaidScreenState extends State<RaidScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
       decoration: BoxDecoration(
         color: const Color(0xCC121034),
-        border: Border.all(color: color.withOpacity(.5)),
+        border: Border.all(color: color.withValues(alpha: .5)),
       ),
       child: Column(
         children: [
