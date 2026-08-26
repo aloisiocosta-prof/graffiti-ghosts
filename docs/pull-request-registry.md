@@ -22,3 +22,8 @@ Every future pull request must include the corresponding Issue number in its tit
 | PR-013 | #20 | Validate GDD acceptance scenarios, accessibility and platform evidence | Planned |
 
 The current implementation increment uses PR-010 as the vertical-slice delivery. PR-010 targets `develop` under Gitflow and must be reviewed before promotion to `main`. Issues #18–#20 remain explicit follow-up backlog items where additional production assets, platform evidence, or broader validation are required.
+
+| PR-014 | #22 | Protect `main` and require CI gates | Implemented via repository branch protection; verification pending in issue record |
+| PR-015 | #23 | Evaluate cross-origin-isolated hosting for multithreaded Skwasm | Pages fallback implemented with explicit single-threaded bootstrap; hosting evaluation remains open |
+
+The branch protection and Web/Wasm hardening changes are attached to the active feature PR for review, with Issues #22 and #23 referenced in the PR and issue comments.

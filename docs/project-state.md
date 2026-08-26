@@ -68,3 +68,13 @@ The first alignment increment replaces the single progress mock with a playable 
 ## Open Questions
 
 The following remain unresolved and must not be silently converted into product decisions: exact score normalization and tie-breaking, persistence strategy, bundled versus local ghost replay storage, Android demo device, production icon pack, exact route graph authored for the fortress, and provider implementation for optional advertisements. These are tracked by the existing technical decisions and issues `#17` through `#20`.
+
+## Repository and Web/Wasm Hardening — 2026-08-26
+
+- `[CLIENT REPORT]` GitHub reported that `main` was not protected.
+- `[DECISION]` `main` now requires pull requests, one approval, resolved conversations, up-to-date CI checks, and administrator enforcement; force pushes and deletion are disabled.
+- `[DECISION]` Gitflow remains `feature/*` → `develop` → reviewed promotion to `main`.
+- `[SOURCE FACT]` The current deployment is GitHub Pages and the repository workflow does not configure COOP/COEP response headers.
+- `[DECISION]` The versioned Web bootstrap forces `forceSingleThreadedSkwasm: true` so the Pages behavior is explicit and the multithreading warning is not misleading.
+- `[VALIDATION REQUIRED]` A future move to a header-capable host must verify COOP/COEP, resource compatibility, browser support, and real-device performance before enabling multithreaded Skwasm.
+- `[TRACKING]` Issues #22 and #23 hold the repository-protection and cross-origin-hosting backlog.
