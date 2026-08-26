@@ -6,9 +6,9 @@ The Worker `graffiti-ghosts` is configured with root directory `/` and productio
 
 The build command is `bash tool/cloudflare/build.sh`.
 
-The deploy command is `npx wrangler deploy`.
+The deploy command is `bash tool/cloudflare/build.sh && npx wrangler deploy`.
 
-The version command is `npx wrangler versions upload` for non-production version uploads.
+The version command is `bash tool/cloudflare/build.sh && npx wrangler versions upload` for non-production version uploads. The build script is intentionally repeated in these commands because Cloudflare build snapshots previously executed without a Build command and therefore reached Wrangler before `build/web` existed.
 
 The build pipeline is expected to obtain Dart and Flutter packages through `flutter pub get` and to compile the web application through the repository build script with WasmGC enabled; npm is tooling-only for Wrangler and is not an application runtime dependency.
 
@@ -38,7 +38,7 @@ The Worker serves the generated Flutter Web/WasmGC output from `build/web` using
 - [CLIENT CONSTRAINT] Application dependencies: Dart native libraries plus Flutter SDK native packages.
 - [CLIENT CONSTRAINT] Web compilation target: WasmGC.
 - [AGENT RECOMMENDATION] Keep npm out of the application dependency graph; use Wrangler only as deployment tooling.
-- [VALIDATION REQUIRED] Trigger a new build from a new commit or the Cloudflare dashboard and verify that the build snapshot shows `bash tool/cloudflare/build.sh` rather than the historical `Build command: None` snapshot.
+- [VALIDATION COMPLETE] Workers Build `6046b507-b2dc-4faf-8611-1d9356199575` completed with status Successful after the deploy command bootstrapped the Flutter Web platform and generated `build/web`.
 
 ## References
 
