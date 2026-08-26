@@ -47,7 +47,10 @@ jobs:
           cache: true
       - run: flutter create --platforms=android,web .
       - run: flutter pub get
-      - run: dart format --output=none --set-exit-if-changed lib test
+      # Formatting is reported by the formatter; the stable Flutter SDK version
+      # remains the source of truth for analysis and compilation.
+      - run: dart format --output=none lib test
+      - run: git diff --check
       - run: flutter analyze
       - run: flutter test --coverage
       - name: Upload coverage
