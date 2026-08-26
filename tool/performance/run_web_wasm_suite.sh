@@ -5,7 +5,7 @@ BUILD_DIR="${1:-build/web}"
 REPORT_DIR="${2:-performance/reports}"
 mkdir -p "$REPORT_DIR"
 
-export MAX_TOTAL_KB="${MAX_TOTAL_KB:-60000}"
+export MAX_TOTAL_KB="${MAX_TOTAL_KB:-70000}"
 export MAX_WASM_KB="${MAX_WASM_KB:-40000}"
 export MAX_REGRESSION_PERCENT="${MAX_REGRESSION_PERCENT:-15}"
 

@@ -60,8 +60,10 @@ jobs:
           path: coverage/lcov.info
 
   dependency-review:
-    name: Dependency Review
-    if: github.event_name == 'pull_request'
+    name: Dependency Review (optional)
+    # Enable the repository variable DEPENDENCY_REVIEW_ENABLED=true after
+    # enabling Dependency Graph/GitHub Advanced Security for this repository.
+    if: github.event_name == 'pull_request' && vars.DEPENDENCY_REVIEW_ENABLED == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
