@@ -315,10 +315,10 @@ A feature is complete when its specification has a stable identifier, domain inv
 
 | ID | Question | Status |
 |---|---|---|
-| `T-001` | Which official Flutter rendering/game-loop approach will be used without external packages? | OPEN |
+| `T-001` | Which official Flutter rendering/game-loop approach will be used without external packages? | PROVISIONAL: `CustomPainter` + official Flutter widgets; platform validation required |
 | `T-002` | Which Android device will be used for the recorded demo? | OPEN |
 | `T-003` | Will persistence remain local for the MVP? | OPEN |
 | `T-004` | Will Web monetization be deferred? | OPEN |
-| `T-005` | Will initial ghosts be bundled, locally recorded, or both? | OPEN |
+| `T-005` | Will initial ghosts be bundled, locally recorded, or both? | PROVISIONAL: bundled visual benchmark in MVP; deterministic replay storage remains open |
 | `T-006` | What are the exact score normalization bounds and second-chance penalties? | OPEN |
-| `T-007` | What is the implementation of the limited graffiti ability and its cooldown? | OPEN |
+| `T-007` | What is the implementation of the limited graffiti ability and its cooldown? | IMPLEMENTED for MVP as one charge per raid; duration/cooldown tuning remains open |
