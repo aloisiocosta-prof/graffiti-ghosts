@@ -205,18 +205,18 @@ class FortressPainter extends CustomPainter {
     final lime = Paint()..color = const Color(0xFFA9FF2F)..strokeWidth = 5..style = PaintingStyle.stroke;
     for (var i = 0; i < 8; i++) {
       final x = (i * size.width / 7) - 50;
-      final h = 170 + (i % 3) * 80;
+      final double h = 170 + (i % 3) * 80;
       canvas.drawRect(Rect.fromLTWH(x, size.height - h - 100, 170, h), wall);
     }
     final routeY = size.height * .56;
     final route = Path()..moveTo(30, routeY)..lineTo(size.width * .33, routeY - 75)..lineTo(size.width * .58, routeY + 18)..lineTo(size.width - 36, routeY - 105);
     canvas.drawPath(route, cyan);
-    canvas.drawLine(size.width * .46, routeY - 10, size.width * .58, routeY + 18, magenta);
+    canvas.drawLine(Offset(size.width * .46, routeY - 10), Offset(size.width * .58, routeY + 18), magenta);
     canvas.drawCircle(Offset(size.width * progress.clamp(.05, .95), routeY - 35), 18, lime);
     canvas.drawCircle(Offset(size.width * ghost.clamp(.05, .95), routeY - 70), 15, Paint()..color = const Color(0xFFA78BFA));
     final graffiti = Paint()..color = const Color(0xFFED28C5)..strokeWidth = 7..style = PaintingStyle.stroke;
     canvas.drawArc(Rect.fromLTWH(size.width * .68, routeY - 180, 90, 90), .3, 4.6, false, graffiti);
-    canvas.drawLine(size.width * .73, routeY - 150, size.width * .82, routeY - 205, lime);
+    canvas.drawLine(Offset(size.width * .73, routeY - 150), Offset(size.width * .82, routeY - 205), lime);
   }
 
   @override
