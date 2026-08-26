@@ -5,5 +5,6 @@ _flutter.loader.load({
     // GitHub Pages cannot provide the COOP/COEP response headers required by
     // SharedArrayBuffer. Keep the current Pages deployment deterministic.
     forceSingleThreadedSkwasm: true,
+    suppressMultithreadingWarning: true,
   },
 });

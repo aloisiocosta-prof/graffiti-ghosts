@@ -41,6 +41,11 @@ jobs:
       - name: Build Web/Wasm
         run: flutter build web --wasm --release --base-href "/graffiti-ghosts/"
 
+      - name: Verify Skwasm bootstrap policy
+        run: |
+          grep -q "forceSingleThreadedSkwasm" web/flutter_bootstrap.js
+          grep -q "suppressMultithreadingWarning" web/flutter_bootstrap.js
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

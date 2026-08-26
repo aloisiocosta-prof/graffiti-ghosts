@@ -27,3 +27,5 @@ The current implementation increment uses PR-010 as the vertical-slice delivery.
 | PR-015 | #23 | Evaluate cross-origin-isolated hosting for multithreaded Skwasm | Pages fallback implemented with explicit single-threaded bootstrap; hosting evaluation remains open |
 
 The branch protection and Web/Wasm hardening changes are attached to the active feature PR for review, with Issues #22 and #23 referenced in the PR and issue comments.
+
+| PR-016 | #24 | Classify upstream Flutter/browser console warnings | Tracking in active feature PR; no direct app history or Intl API found |
