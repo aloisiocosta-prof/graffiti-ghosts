@@ -1,0 +1,27 @@
+flowchart TB
+  subgraph Presentation["package presentation"]
+    RaidUI["raid"]
+    ResultsUI["results"]
+    BaseUI["base"]
+    CosmeticsUI["cosmetics"]
+  end
+  subgraph Application["package application"]
+    RaidUseCases["raid use cases"]
+    RewardUseCases["reward and progression use cases"]
+  end
+  subgraph Domain["package domain"]
+    Entities["entities"]
+    Values["value objects"]
+    Services["domain services"]
+    Ports["ports"]
+  end
+  subgraph Infrastructure["package infrastructure"]
+    Persistence["persistence"]
+    Ghosts["ghosts"]
+    Platform["platform adapters"]
+    Monetization["monetization adapter"]
+  end
+  Presentation --> Application
+  Application --> Domain
+  Infrastructure --> Domain
+  Infrastructure --> Application

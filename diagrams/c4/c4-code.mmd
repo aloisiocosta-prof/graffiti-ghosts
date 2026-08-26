@@ -1,0 +1,94 @@
+classDiagram
+  direction LR
+
+  class Raid {
+    +RaidId id
+    +FortressId fortressId
+    +RaidState state
+    +start()
+    +recordAction(RaidAction action)
+    +checkpoint()
+    +capture()
+    +escape()
+  }
+  class Fortress {
+    +FortressId id
+    +FortressGraph graph
+    +RouteOptions alternativeRoutes
+    +GraffitiRules graffitiRules
+  }
+  class GhostRun {
+    +GhostRunId id
+    +ReplayVersion version
+    +List~ReplayEvent~ events
+    +GhostScore score
+    +nextEvent(Duration elapsed)
+  }
+  class Thief {
+    +MovementKit movementKit
+    +TreasureAmount carriedTreasure
+    +FailureCount failures
+    +activateGraffiti()
+  }
+  class GhostScore {
+    +ScoreComponent time
+    +ScoreComponent treasure
+    +ScoreComponent failures
+    +CombinedScore combined
+  }
+  class RaidOutcomeService {
+    +resolveCapture(Raid raid)
+    +resolveSecondChance(Raid raid)
+    +resolveEscape(Raid raid)
+  }
+  class ChaseService {
+    +startChase(Raid raid)
+    +validateAlternativeRoute(RouteId routeId)
+  }
+  class GraffitiRuleService {
+    +activateLimitedAbility(Raid raid)
+    +applyEffect(GraffitiEffect effect)
+  }
+  class GhostScoreService {
+    +calculate(TimeValue time, TreasureAmount treasure, FailureCount failures)
+  }
+  class ProgressionService {
+    +claimRewards(RewardBundle rewards)
+    +upgradeBase(UpgradeId upgrade)
+  }
+  class GhostRepository {
+    <<interface>>
+    +read(FortressId fortressId)
+    +write(GhostRun run)
+  }
+  class FortressRepository {
+    <<interface>>
+    +read(FortressId fortressId)
+  }
+  class MonetizationPort {
+    <<interface>>
+    +requestSecondChance()
+    +requestTreasureBonus()
+  }
+  class FortressFactory {
+    +create(FortressData data) Fortress
+  }
+  class GhostRunFactory {
+    +create(GhostRunData data) GhostRun
+  }
+
+  Raid *-- Thief
+  Fortress *-- GhostRun
+  Raid --> Fortress
+  Raid --> GhostRun
+  RaidOutcomeService --> Raid
+  ChaseService --> Fortress
+  GraffitiRuleService --> Fortress
+  GhostScoreService --> GhostScore
+  GhostRun --> GhostScore
+  ProgressionService --> RewardBundle
+  GhostRepository ..> GhostRun
+  FortressRepository ..> Fortress
+  FortressFactory ..> Fortress
+  GhostRunFactory ..> GhostRun
+  MonetizationPort ..> Raid

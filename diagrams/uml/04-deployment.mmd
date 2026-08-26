@@ -1,0 +1,22 @@
+flowchart LR
+  subgraph AndroidDevice["<<device>> Android Device"]
+    AndroidRuntime["<<executionEnvironment>> Flutter Android Runtime"]
+    AndroidApp["Graffiti Ghosts APK"]
+    AndroidStorage["<<artifact>> Local Save Data"]
+    AndroidRuntime --> AndroidApp
+    AndroidApp --> AndroidStorage
+  end
+  subgraph Browser["<<device>> Browser"]
+    WasmRuntime["<<executionEnvironment>> Web/Wasm Runtime"]
+    WebApp["Graffiti Ghosts Web Build"]
+    BrowserStorage["<<artifact>> Browser Save Data"]
+    WasmRuntime --> WebApp
+    WebApp --> BrowserStorage
+  end
+  subgraph Source["Build Source"]
+    DartFlutter["Dart + Flutter Native Source"]
+    DomainArtifact["<<artifact>> Shared Domain/Application"]
+    DartFlutter --> DomainArtifact
+    DomainArtifact --> AndroidApp
+    DomainArtifact --> WebApp
+  end

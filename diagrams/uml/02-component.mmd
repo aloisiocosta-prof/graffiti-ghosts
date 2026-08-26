@@ -1,0 +1,17 @@
+C4Component
+  title Graffiti Ghosts — UML Component View
+
+  Component(presentation, "Presentation", "Flutter", "Screens, widgets, input, HUD, results, base and cosmetics")
+  Component(application, "Application", "Dart", "Raid and progression use cases")
+  Component(domain, "Domain", "Pure Dart", "Entities, rules, services and invariants")
+  Component(ports, "Ports", "Dart interfaces", "Repositories, clock, monetization and analytics")
+  Component(infrastructure, "Infrastructure", "Dart/Flutter adapters", "Persistence, ghosts, fortress data and composition")
+  Component(android, "Android Adapter", "Flutter boundary", "Android-specific integration")
+  Component(web, "Web Adapter", "Flutter boundary", "Web/Wasm-specific integration")
+
+  Rel(presentation, application, "invokes")
+  Rel(application, domain, "executes")
+  Rel(application, ports, "depends on")
+  Rel(infrastructure, ports, "implements")
+  Rel(presentation, android, "optional boundary")
+  Rel(presentation, web, "optional boundary")

@@ -1,0 +1,29 @@
+name: graffiti_ghosts
+description: A stealth platformer MVP for Android and Web/Wasm.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+  flutter: ">=3.24.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+
+# Graffiti Ghosts deliberately uses only Dart and Flutter SDK packages in the MVP.
+# The cupertino_icons SDK entry is retained for Flutter template compatibility and
+# may be removed if no Cupertino icon is used.

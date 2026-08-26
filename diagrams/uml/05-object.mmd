@@ -1,0 +1,34 @@
+classDiagram
+  direction LR
+
+  class raid_001 {
+    <<object>>
+    id = raid-001
+    state = Chasing
+  }
+  class thief_001 {
+    <<object>>
+    movement = Jump, WallGrab, Slide
+    treasure = 35
+  }
+  class fortress_neon_01 {
+    <<object>>
+    id = neon-fortress-01
+    theme = UrbanFantasy
+  }
+  class ghost_run_014 {
+    <<object>>
+    score = 820
+    events = RecordedAttempt
+  }
+  class score_001 {
+    <<object>>
+    timeWeight = 0.40
+    treasureWeight = 0.40
+    failureWeight = 0.20
+  }
+
+  raid_001 *-- thief_001
+  raid_001 --> fortress_neon_01
+  raid_001 --> ghost_run_014
+  ghost_run_014 *-- score_001

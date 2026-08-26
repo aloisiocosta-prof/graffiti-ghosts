@@ -1,0 +1,27 @@
+C4Container
+  title Graffiti Ghosts — C2 Containers
+
+  Person(player, "Player", "Mobile and browser player")
+  System_Boundary(game, "Graffiti Ghosts") {
+    Container(presentation, "Presentation", "Flutter native APIs", "Raid, fortress selection, results, base, cosmetics, input feedback, and accessibility.")
+    Container(application, "Application", "Dart", "Use cases for starting raids, updating runs, resolving detection, activating graffiti, completing heists, comparing ghosts, claiming rewards, and upgrading the base.")
+    Container(domain, "Domain", "Pure Dart", "Entities, value objects, invariants, score, chase, progression, route, and reward rules.")
+    Container(ports, "Ports", "Dart interfaces", "Ghost, fortress, progression, monetization, analytics, clock, and persistence abstractions.")
+    Container(infrastructure, "Infrastructure Adapters", "Dart and isolated platform adapters", "Persistence, bundled/local ghosts, fortress data, clock, composition root, and adapter implementations.")
+    Container(android_adapter, "Android Adapter", "Flutter platform boundary", "Only platform-specific Android integration required by the MVP.")
+    Container(web_adapter, "Web Adapter", "Flutter Web/Wasm boundary", "Only browser-specific integration required by the MVP.")
+  }
+  System_Ext(android, "Android", "Target platform")
+  System_Ext(web, "Web/Wasm", "Target platform")
+  System_Ext(rewarded_ads, "Optional Rewarded Ads", "Deferred external capability behind MonetizationPort")
+
+  Rel(player, presentation, "Interacts through touch, keyboard, or pointer")
+  Rel(presentation, application, "Invokes use cases and observes presentation state")
+  Rel(application, domain, "Executes domain rules")
+  Rel(application, ports, "Depends on abstractions")
+  Rel(infrastructure, ports, "Implements ports")
+  Rel(presentation, android_adapter, "Uses only when required")
+  Rel(presentation, web_adapter, "Uses only when required")
+  Rel(android, android_adapter, "Hosts")
+  Rel(web, web_adapter, "Hosts")
+  Rel(infrastructure, rewarded_ads, "Optional request through monetization port")
