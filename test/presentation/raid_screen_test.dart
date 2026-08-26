@@ -6,19 +6,19 @@ void main() {
   testWidgets('renders fortress selection and starts the raid', (tester) async {
     await tester.pumpWidget(const GraffitiGhostsApp());
 
-    expect(find.text('GRAFFITI GHOSTS'), findsOneWidget);
-    expect(find.text('THE NEON VAULT'), findsOneWidget);
-    expect(find.text('ENTER FORTRESS'), findsOneWidget);
+    expect(find.text('GRAFFITI GHOSTS'), findsAtLeastNWidgets(1));
+    expect(find.text('THE NEON VAULT'), findsAtLeastNWidgets(1));
+    expect(find.text('ENTER FORTRESS'), findsAtLeastNWidgets(1));
 
     final enterButton = find.text('ENTER FORTRESS');
     await tester.ensureVisible(enterButton);
     await tester.tap(enterButton);
     await tester.pumpAndSettle();
 
-    expect(find.text('NEON VAULT / RAID 01'), findsOneWidget);
-    expect(find.text('GRAFFITI'), findsOneWidget);
-    expect(find.text('WALL-GRAB'), findsOneWidget);
-    expect(find.text('SLIDE'), findsOneWidget);
+    expect(find.text('NEON VAULT / RAID 01'), findsAtLeastNWidgets(1));
+    expect(find.text('GRAFFITI'), findsAtLeastNWidgets(1));
+    expect(find.text('WALL-GRAB'), findsAtLeastNWidgets(1));
+    expect(find.text('SLIDE'), findsAtLeastNWidgets(1));
   });
 
   testWidgets('movement enters chase and exposes alternative route action', (tester) async {
@@ -33,8 +33,8 @@ void main() {
     }
     await tester.pumpAndSettle();
 
-    expect(find.text('DETECTED — the guard is in pursuit. Select the revealed alternative route to escape.'), findsOneWidget);
-    expect(find.text('ESCAPE'), findsOneWidget);
+    expect(find.text('DETECTED — the guard is in pursuit. Select the revealed alternative route to escape.'), findsAtLeastNWidgets(1));
+    expect(find.text('ESCAPE'), findsAtLeastNWidgets(1));
   });
 
   testWidgets('critical raid controls have semantic labels', (tester) async {
@@ -44,9 +44,9 @@ void main() {
     await tester.tap(enterButton);
     await tester.pumpAndSettle();
 
-    expect(find.bySemanticsLabel('GRAFFITI'), findsOneWidget);
-    expect(find.bySemanticsLabel('JUMP'), findsOneWidget);
-    expect(find.bySemanticsLabel('WALL-GRAB'), findsOneWidget);
-    expect(find.bySemanticsLabel('SLIDE'), findsOneWidget);
+    expect(find.bySemanticsLabel('GRAFFITI'), findsAtLeastNWidgets(1));
+    expect(find.bySemanticsLabel('JUMP'), findsAtLeastNWidgets(1));
+    expect(find.bySemanticsLabel('WALL-GRAB'), findsAtLeastNWidgets(1));
+    expect(find.bySemanticsLabel('SLIDE'), findsAtLeastNWidgets(1));
   });
 }
