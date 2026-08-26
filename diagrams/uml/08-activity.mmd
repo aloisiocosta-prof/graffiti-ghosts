@@ -1,0 +1,25 @@
+flowchart TD
+  Start((Start)) --> Select[Select fortress]
+  Select --> Enter[Enter fortress]
+  Enter --> Traverse[Traverse with jump, wall-grab, and slide]
+  Traverse --> Graffiti{Limited graffiti ability available?}
+  Graffiti -- Yes --> Activate[Activate graffiti automatically]
+  Activate --> Effect[Reveal route, create shortcut, or alter trap]
+  Graffiti -- No --> Detect{Detected?}
+  Effect --> Detect
+  Detect -- No --> Treasure[Reach and collect treasure]
+  Detect -- Yes --> Chase[Start chase]
+  Chase --> Route{Alternative route available?}
+  Route -- Yes --> EscapeRoute[Choose and traverse alternative route]
+  EscapeRoute --> Treasure
+  Route -- No --> Captured[Captured]
+  Captured --> SecondChance{Use optional second chance?}
+  SecondChance -- Yes --> Checkpoint[Restart at checkpoint with penalties]
+  Checkpoint --> Chase
+  SecondChance -- No --> Reset[Lose carried treasure and reset to start]
+  Reset --> EndFail((End failed raid))
+  Treasure --> Exit{Escape successfully?}
+  Exit -- No --> Captured
+  Exit -- Yes --> Result[Calculate score and show ghost]
+  Result --> Rewards[Claim treasure, reputation, and progression]
+  Rewards --> EndSuccess((End successful raid))

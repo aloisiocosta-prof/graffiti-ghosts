@@ -1,0 +1,40 @@
+C4Component
+  title Graffiti Ghosts — C3 Application Components
+
+  Container_Boundary(application, "Application Container") {
+    Component(start_raid, "StartRaid", "Use case", "Loads fortress and ghost data, initializes a raid, and creates the initial checkpoint.")
+    Component(update_raid, "UpdateRaid", "Use case", "Processes player actions, time, movement events, and current raid state.")
+    Component(detection, "ResolveDetection", "Use case", "Starts a chase and exposes valid alternative routes.")
+    Component(graffiti, "ActivateGraffiti", "Use case", "Consumes the limited ability and applies a route, platform, shortcut, or trap effect.")
+    Component(heist, "CompleteHeist", "Use case", "Resolves treasure theft, escape, capture, and final raid outcome.")
+    Component(score, "CompareGhost", "Use case", "Calculates the combined score and compares the recorded ghost silhouette.")
+    Component(rewards, "ClaimRewards", "Use case", "Separates competitive score from economic reward claims and optional bonuses.")
+    Component(upgrade, "UpgradeBase", "Use case", "Validates and applies storage, area, ability, and visual progression changes.")
+  }
+  Container_Boundary(domain, "Domain Services") {
+    Component(raid_outcome, "RaidOutcomeService", "Domain service", "Capture, checkpoint, escape, treasure loss, and second-chance penalty rules.")
+    Component(chase, "ChaseService", "Domain service", "Pursuit state and alternative-route validation.")
+    Component(graffiti_rules, "GraffitiRuleService", "Domain service", "Limited activation and magical-graffiti effects.")
+    Component(ghost_score, "GhostScoreService", "Domain service", "40% time, 40% treasure, 20% failures after normalization.")
+    Component(progression, "ProgressionService", "Domain service", "Reputation, unlocks, storage, areas, abilities, and base improvements.")
+  }
+  Container_Boundary(ports, "Ports") {
+    Component(fortress_repo, "FortressRepository", "Port", "Reads authored fortress graph and configuration.")
+    Component(ghost_repo, "GhostRepository", "Port", "Reads and stores deterministic ghost attempts.")
+    Component(progression_repo, "ProgressionRepository", "Port", "Reads and writes local progression.")
+    Component(monetization, "MonetizationPort", "Port", "Optional second chance or treasure bonus; never modifies ghost score.")
+  }
+
+  Rel(start_raid, fortress_repo, "loads")
+  Rel(start_raid, ghost_repo, "loads")
+  Rel(update_raid, detection, "delegates detection")
+  Rel(update_raid, graffiti, "delegates activation")
+  Rel(detection, chase, "uses")
+  Rel(graffiti, graffiti_rules, "uses")
+  Rel(heist, raid_outcome, "uses")
+  Rel(score, ghost_score, "uses")
+  Rel(rewards, monetization, "requests optional bonus")
+  Rel(upgrade, progression, "uses")
+  Rel(upgrade, progression_repo, "persists")
+  Rel(rewards, progression_repo, "persists rewards")
+  Rel(score, ghost_repo, "reads recorded attempt")

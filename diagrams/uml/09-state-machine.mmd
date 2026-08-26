@@ -1,0 +1,20 @@
+stateDiagram-v2
+  [*] --> Ready
+  Ready --> Infiltrating: start raid
+  Infiltrating --> Infiltrating: move / jump / wall-grab / slide
+  Infiltrating --> GraffitiActive: activate limited graffiti ability
+  GraffitiActive --> Infiltrating: effect resolved
+  Infiltrating --> Chasing: detected
+  Chasing --> Infiltrating: reach alternative route
+  Chasing --> Captured: no valid escape
+  Captured --> CheckpointRestart: accept second chance
+  Captured --> Reset: decline second chance
+  CheckpointRestart --> Chasing: resume with penalties
+  Reset --> Ready: lose treasure and restart
+  Infiltrating --> TreasureSecured: steal treasure
+  TreasureSecured --> Escaping: begin extraction
+  Escaping --> Completed: reach exit
+  Escaping --> Chasing: detected during escape
+  Completed --> Scored: calculate combined score
+  Scored --> Rewarded: claim rewards
+  Rewarded --> [*]

@@ -1,0 +1,13 @@
+C4Context
+  title Graffiti Ghosts — C1 System Context
+
+  Person(player, "Player", "Agile thief who infiltrates fortresses, escapes chases, steals treasure, and competes against ghost attempts.")
+  System(game, "Graffiti Ghosts", "Single-player stealth platformer with sub-three-minute raids, magical graffiti, progression, and asynchronous ghost competition.")
+  System_Ext(android, "Android Platform", "Touch input, local runtime, and device capabilities.")
+  System_Ext(web, "Web/Wasm Platform", "Browser runtime, keyboard/pointer input, and local browser capabilities.")
+  System_Ext(ad_provider, "Optional Rewarded-Ad Capability", "External capability represented only through a port; not part of the native-only MVP baseline.")
+
+  Rel(player, game, "Plays raids, uses movement, activates graffiti, collects rewards")
+  Rel(android, game, "Hosts native Flutter build")
+  Rel(web, game, "Hosts Web/Wasm Flutter build")
+  Rel(game, ad_provider, "Requests optional second chance or treasure bonus", "Monetization port")

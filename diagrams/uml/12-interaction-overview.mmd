@@ -1,0 +1,10 @@
+flowchart TD
+  Start((Start)) --> I1["Interaction 1: Select Fortress"]
+  I1 --> I2["Interaction 2: Infiltration"]
+  I2 --> Decision{Detected?}
+  Decision -- No --> I3["Interaction 3: Steal and Escape"]
+  Decision -- Yes --> I4["Interaction 4: Chase and Alternative Route"]
+  I4 --> I3
+  I3 --> I5["Interaction 5: Ghost Comparison"]
+  I5 --> I6["Interaction 6: Rewards and Base Progression"]
+  I6 --> End((End))

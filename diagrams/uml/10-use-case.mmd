@@ -1,0 +1,25 @@
+flowchart LR
+  Player["Actor: Player"]
+  Select((Select fortress))
+  Infiltrate((Infiltrate fortress))
+  UseMovement((Use movement kit))
+  UseGraffiti((Activate magical graffiti))
+  Escape((Escape pursuit))
+  Steal((Steal treasure))
+  Compare((Compare ghost score))
+  Upgrade((Upgrade base))
+  Customize((Customize thief/base))
+  OptionalReward((Request optional reward))
+
+  Player --> Select
+  Player --> Infiltrate
+  Infiltrate --> UseMovement
+  Infiltrate --> UseGraffiti
+  Infiltrate --> Escape
+  Infiltrate --> Steal
+  Player --> Compare
+  Player --> Upgrade
+  Player --> Customize
+  Player --> OptionalReward
+  OptionalReward -.-> Steal
+  Compare -.-> Infiltrate
