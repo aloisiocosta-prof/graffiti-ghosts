@@ -2,6 +2,7 @@ name: CI / DevSecOps
 
 on:
   pull_request:
+  workflow_dispatch:
   push:
     branches: [main, develop]
 
@@ -103,7 +104,7 @@ jobs:
     name: Web/Wasm Performance and Bundle Audit
     runs-on: ubuntu-latest
     needs: [build-web-wasm]
-    if: github.event_name == 'pull_request'
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
     permissions:
       contents: read
       pull-requests: write
@@ -124,7 +125,7 @@ jobs:
           path: performance/reports
           if-no-files-found: warn
       - name: Comment PR with performance summary
-        if: always()
+        if: always() && github.event_name == 'pull_request'
         uses: actions/github-script@v7
         env:
           SUMMARY_PATH: performance/reports/performance-summary.md
