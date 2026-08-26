@@ -1,0 +1,28 @@
+flowchart LR
+    A[Commit ou tag] --> B[Build Web/Wasm release]
+    B --> C[Smoke boot e fallback]
+    C --> D{Funcionalidade válida?}
+    D -- Não --> E[Issue bloqueante]
+    D -- Sim --> F[Trace de load]
+    F --> G[Trace de raid]
+    G --> H[20 raids e memória]
+    H --> I[Exportar métricas e evidências]
+    I --> J{Dentro dos gates?}
+    J -- Não --> K[Profiling e hipótese]
+    K --> L[Patch isolado]
+    L --> B
+    J -- Sim --> M[Baseline aprovada]
+    M --> N{Tag de release?}
+    N -- Não --> O[Relatório em PR]
+    N -- Sim --> P[APK + Web/Wasm + Release]
+
+    subgraph Metrica[Dimensões medidas]
+      Q[Boot e transferência]
+      R[Frame time e jank]
+      S[Input e rebuilds]
+      T[Heap, GC e estabilidade]
+    end
+    F -.-> Q
+    G -.-> R
+    G -.-> S
+    H -.-> T

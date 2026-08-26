@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Graffiti Ghosts Web/Wasm Performance Baseline",
+  "type": "object",
+  "required": ["commit", "tag", "flutter", "browser", "runtime", "device", "scenarios"],
+  "properties": {
+    "commit": { "type": "string", "minLength": 7 },
+    "tag": { "type": "string" },
+    "flutter": { "type": "string" },
+    "browser": { "type": "string" },
+    "runtime": { "enum": ["wasm", "javascript-fallback"] },
+    "device": { "type": "string" },
+    "viewport": { "type": "string" },
+    "networkProfile": { "type": "string" },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "runs", "measurements"],
+        "properties": {
+          "id": { "type": "string" },
+          "runs": { "type": "integer", "minimum": 1 },
+          "measurements": {
+            "type": "object",
+            "properties": {
+              "t0ToRaidReadyMs": { "type": ["number", "null"], "minimum": 0 },
+              "frameTimeMedianMs": { "type": ["number", "null"], "minimum": 0 },
+              "frameTimeP95Ms": { "type": ["number", "null"], "minimum": 0 },
+              "frameTimeP99Ms": { "type": ["number", "null"], "minimum": 0 },
+              "heapAfterBootMb": { "type": ["number", "null"], "minimum": 0 },
+              "heapAfter20RaidsMb": { "type": ["number", "null"], "minimum": 0 },
+              "transferCompressedKb": { "type": ["number", "null"], "minimum": 0 }
+            }
+          },
+          "evidence": { "type": "array", "items": { "type": "string" } },
+          "decision": { "enum": ["ACCEPT", "RETEST", "BLOCK", "UNSET"] }
+        }
+      }
+    }
+  }
+}
