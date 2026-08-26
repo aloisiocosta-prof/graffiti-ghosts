@@ -77,16 +77,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  codeql:
-    name: CodeQL
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: github/codeql-action/init@v3
-        with:
-          languages: javascript
-      - uses: github/codeql-action/analyze@v3
-
+  # CodeQL is intentionally omitted from this Dart-only MVP because the
+  # supported CodeQL languages do not include Dart. Re-enable it when a
+  # supported source language is added; secret scanning and dependency review
+  # remain mandatory below.
   build-web-wasm:
     name: Build Web Wasm
     runs-on: ubuntu-latest
