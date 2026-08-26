@@ -18,6 +18,13 @@ export PATH="${FLUTTER_ROOT}/bin:${FLUTTER_ROOT}/bin/cache/dart-sdk/bin:${PATH}"
 
 flutter config --enable-web
 flutter --version
+
+# The repository intentionally keeps only Dart/Flutter SDK dependencies. The web
+# platform scaffold is generated in CI when it is not checked into the project.
+if [[ ! -f web/index.html ]]; then
+  flutter create --platforms web .
+fi
+
 flutter pub get
 flutter build web --wasm --release --base-href "${FLUTTER_BASE_HREF}"
 
