@@ -1,0 +1,73 @@
+version: 1
+project: graffiti-ghosts
+source_policy: "The user-provided report is methodological evidence; it does not override project-specific decisions."
+decisions:
+  - id: ADR-001
+    decision: "Use spec-driven development with explicit feature contracts."
+    reason: "The report requires input, state, rules, output, feedback, failure, recovery, and acceptance criteria before implementation."
+    source: "DR-1"
+    user_input: "Refactor all current context based on the attached report."
+    alternatives: ["Ad-hoc implementation", "Code-first discovery"]
+    impact: "Adds specification and validation gates to every non-trivial change."
+    status: CONFIRMED
+  - id: ADR-002
+    decision: "Use question-driven sections for GDD and technical specifications."
+    reason: "Each section must expose purpose, questions, decision, rationale, evidence, dependencies, and acceptance criteria."
+    source: "DR-1"
+    user_input: "Project instructions require an adaptive questionnaire and traceable GDD."
+    alternatives: ["Narrative-only GDD", "Unstructured notes"]
+    impact: "Existing documents must be normalized without deleting non-applicable sections silently."
+    status: CONFIRMED
+  - id: ADR-003
+    decision: "Retain the Graffiti Ghosts core loop as the product-specific design authority."
+    reason: "The report contains generic examples that do not describe Graffiti Ghosts."
+    source: "GG-1; DR-1"
+    user_input: "Apply the report to the current Graffiti Ghosts context."
+    alternatives: ["Replace the game loop with the report's generic puzzle loop", "Leave loop undefined"]
+    impact: "Research examples become method references, not gameplay requirements."
+    status: CONFIRMED
+  - id: ADR-004
+    decision: "Permit only Dart native libraries and Flutter SDK native packages in application runtime code."
+    reason: "This is the current project constraint and is stricter than the report's generic package examples."
+    source: "GG-2; user constraint"
+    user_input: "The application is Dart/Flutter compiled for Web WasmGC with only native Dart and Flutter SDK packages."
+    alternatives: ["Adopt a third-party game engine", "Adopt a state-management package"]
+    impact: "Every dependency exception requires a separate compatibility, license, maintenance, and architecture decision."
+    status: CONFIRMED
+  - id: ADR-005
+    decision: "Keep RevenueCat and monetization conditional until a client decision approves monetization scope."
+    reason: "The report gives RevenueCat patterns and sample products, but sample products are not Graffiti Ghosts requirements."
+    source: "DR-1"
+    user_input: "No explicit approval of products, prices, ads, subscriptions, or premium features was provided in the current context."
+    alternatives: ["Implement RevenueCat immediately", "Remove monetization from all future planning"]
+    impact: "RevenueCat adapter and specs remain prepared but unimplemented until the gate is approved."
+    status: VALIDATION_REQUIRED
+  - id: ADR-006
+    decision: "Use Clean Architecture and Ports & Adapters for Android and Web/Wasm integrations."
+    reason: "The project skill forbids platform APIs from leaking into domain/application."
+    source: "GG-2"
+    user_input: "Project instructions mandate Flutter Clean Architecture and platform adapters."
+    alternatives: ["Platform-specific logic in widgets", "Direct SDK calls from domain"]
+    impact: "Requires adapter contracts and platform compatibility evidence."
+    status: CONFIRMED
+  - id: ADR-007
+    decision: "Require explicit lifecycle states and recovery paths before adding purchases, persistence, or background behavior."
+    reason: "The report identifies lifecycle transitions as an independent engineering responsibility."
+    source: "DR-1"
+    user_input: "Refactor the current context into a traceable, implementable system."
+    alternatives: ["Implicit lifecycle handling", "Widget-local lifecycle flags"]
+    impact: "Adds lifecycle specification and tests before monetization or sync work."
+    status: CONFIRMED
+  - id: ADR-008
+    decision: "Use anonymous telemetry only after event schemas and privacy boundaries are approved."
+    reason: "The report requires event schemas before instrumentation and excludes personal data."
+    source: "DR-1"
+    user_input: "No analytics provider or consent policy is currently approved."
+    alternatives: ["Instrument immediately with a third-party SDK", "Collect no telemetry"]
+    impact: "Telemetry remains a schema and validation task until provider and consent are decided."
+    status: VALIDATION_REQUIRED
+
+references:
+  DR-1: ../references/deep-research-report.md
+  GG-1: ../core-loop-design.md
+  GG-2: ../../.agents/skills/graffiti-ghosts-agentic-game-development/SKILL.md
