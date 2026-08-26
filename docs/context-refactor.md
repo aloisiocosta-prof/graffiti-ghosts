@@ -36,10 +36,20 @@ The research report is adopted as a **process and governance reference**, while 
 
 | Artifact | Location | Purpose | Status |
 |---|---|---|---|
-| Project GDD inputs | `docs/concept-brief.md` | Vision, audience, pillars, scope | Existing; normalize progressively |
-| Core loop | `docs/core-loop-design.md` | Player verbs, states, scoring, retry | Existing source of truth |
-| Technical specification | `docs/technical-and-demo-spec.md` | Architecture and platform contracts | Existing; extend dependency matrix |
-| Visual style | `docs/visual-style-guide.md` | Art direction and asset rules | Existing source of truth |
+| GDD master index | `docs/gdd/00-GDD-MASTER-README.md` | GDD workflow, artifacts, statuses | CREATED |
+| Project GDD | `docs/gdd/01-GDD-MASTER.md` | Vision, audience, pillars, scope | CREATED / OPEN QUESTIONS |
+| Game specification | `docs/gdd/02-GAME-SPECIFICATION.md` | Mechanics, loop, states, progression | CREATED |
+| Economy specification | `docs/gdd/03-ECONOMY-SPECIFICATION.md` | Resources, faucets, sinks, balance | CREATED / OPEN QUESTIONS |
+| Monetization specification | `docs/gdd/04-MONETIZATION-REVENUECAT-SPECIFICATION.md` | Conditional monetization and entitlements | CREATED / VALIDATION REQUIRED |
+| Lifecycle specification | `docs/gdd/05-LIFECYCLE-SPECIFICATION.md` | Application states and recovery | CREATED / OPEN QUESTIONS |
+| UX/UI specification | `docs/gdd/06-UX-UI-SPECIFICATION.md` | Screens, controls, feedback, accessibility | CREATED / OPEN QUESTIONS |
+| Asset Bible | `docs/gdd/07-ASSET-BIBLE.md` | Art direction and asset contracts | CREATED / LICENSE VALIDATION |
+| Technical specification | `docs/gdd/08-TECHNICAL-SPECIFICATION.md` | Architecture and platform contracts | CREATED |
+| QA specification | `docs/gdd/09-QA-ACCEPTANCE-SPECIFICATION.md` | Tests and acceptance evidence | CREATED |
+| Agent orchestration | `docs/gdd/10-AGENT-ORCHESTRATION.md` | Agents, handoffs, stop conditions | CREATED |
+| Decision log | `docs/gdd/11-TRACEABILITY-DECISION-LOG.md` | Requirements, decisions, ADRs | CREATED |
+| Project gates | `docs/gdd/12-PROJECT-GATES.md` | Definition of Ready/Done | CREATED |
+| Legacy/project source docs | `docs/concept-brief.md`, `docs/core-loop-design.md`, `docs/technical-and-demo-spec.md`, `docs/visual-style-guide.md` | Existing evidence and design references | RETAINED AS SOURCE |
 | Research source | `docs/references/deep-research-report.md` | Preserved user-provided source | Versioned |
 | Research extraction | `docs/research/deep-research-report-extraction.md` | Frameworks, rules, anti-patterns | Created |
 | Agent orchestration | `docs/governance/agent-orchestration.md` | Roles, handoffs, gates | Created |

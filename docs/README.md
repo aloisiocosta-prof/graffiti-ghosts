@@ -57,3 +57,7 @@ Governance artifacts are [`governance/agent-orchestration.md`](governance/agent-
 Design and platform specifications are cataloged in [`specs/README.md`](specs/README.md), including lifecycle, economy, conditional RevenueCat monetization, telemetry, dependency compatibility, and asset metadata.
 
 The traceability matrix now maps these artifacts to GDD sources, implementation targets, tests, Issues, Pull Requests, and status semantics.
+
+## GDD Master Package
+
+The adapted 13-document GDD package is available under [`gdd/`](gdd/), beginning with [`00-GDD-MASTER-README.md`](gdd/00-GDD-MASTER-README.md). The package is aligned with the current Graffiti Ghosts core loop, vertical slice, native Dart/Flutter dependency constraint, Android/Web/WasmGC targets, Cloudflare deployment, and current open decisions.
