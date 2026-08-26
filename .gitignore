@@ -1,0 +1,25 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+.pub/
+build/
+coverage/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Android signing and secrets
+*.jks
+*.keystore
+key.properties
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db

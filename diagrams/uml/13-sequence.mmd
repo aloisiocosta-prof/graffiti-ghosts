@@ -1,0 +1,36 @@
+sequenceDiagram
+  autonumber
+  actor Player
+  participant UI as Raid UI
+  participant Start as StartRaid
+  participant Raid as Raid Aggregate
+  participant Chase as ChaseService
+  participant Graffiti as GraffitiRuleService
+  participant Score as GhostScoreService
+  participant Ghost as GhostRepository
+  participant Rewards as ClaimRewards
+
+  Player->>UI: Select fortress
+  UI->>Start: execute(fortressId)
+  Start->>Raid: create and initialize
+  Raid-->>UI: initial raid state
+  Player->>UI: Move, jump, wall-grab, slide
+  UI->>Raid: record action
+  Player->>UI: Activate limited graffiti
+  UI->>Graffiti: apply effect
+  Graffiti-->>Raid: route/shortcut/trap effect
+  Player->>UI: Trigger detection
+  UI->>Chase: start chase
+  Chase-->>Raid: expose alternative routes
+  Player->>UI: Choose alternative route
+  UI->>Chase: validate route
+  Chase-->>Raid: escape accepted
+  Player->>UI: Steal and extract
+  UI->>Raid: complete heist
+  UI->>Score: calculate outcome
+  Score->>Ghost: read recorded attempt
+  Ghost-->>Score: ghost run
+  Score-->>UI: score, breakdown, silhouette
+  Player->>UI: Claim rewards
+  UI->>Rewards: execute
+  Rewards-->>UI: treasure, reputation, progression

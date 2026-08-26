@@ -1,0 +1,40 @@
+classDiagram
+  direction LR
+
+  class DomainEntity {
+    <<stereotype>>
+  }
+  class ValueObject {
+    <<stereotype>>
+  }
+  class DomainService {
+    <<stereotype>>
+  }
+  class Port {
+    <<stereotype>>
+  }
+  class Adapter {
+    <<stereotype>>
+  }
+  class Raid {
+    <<DomainEntity>>
+  }
+  class GhostScore {
+    <<ValueObject>>
+  }
+  class GhostScoreService {
+    <<DomainService>>
+  }
+  class GhostRepository {
+    <<Port>>
+  }
+  class LocalGhostRepository {
+    <<Adapter>>
+  }
+
+  DomainEntity <|-- Raid
+  ValueObject <|-- GhostScore
+  DomainService <|-- GhostScoreService
+  Port <|-- GhostRepository
+  Adapter <|-- LocalGhostRepository
+  LocalGhostRepository ..|> GhostRepository

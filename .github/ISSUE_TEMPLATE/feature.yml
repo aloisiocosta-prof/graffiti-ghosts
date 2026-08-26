@@ -1,0 +1,44 @@
+name: Feature or Design Contract
+description: Register a feature, system, or GDD decision before implementation.
+title: "feat: "
+labels: [feature]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every implementation must have a traceable specification and acceptance criteria.
+  - type: input
+    id: decision-id
+    attributes:
+      label: Decision ID
+      description: Reference the decision or requirement in the GDD.
+      placeholder: DEC-001
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Player or product problem
+      description: What experience or requirement does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and acceptance criteria
+      description: Describe observable behavior and testable outcomes.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and platform impact
+      description: Include Android, Web/Wasm, security, performance, and economy concerns.
+  - type: checkboxes
+    id: readiness
+    attributes:
+      label: Readiness
+      options:
+        - label: Design decision is confirmed or explicitly marked as validation required.
+        - label: Acceptance criteria can be covered by tests.
+        - label: No external dependency is required without architectural review.

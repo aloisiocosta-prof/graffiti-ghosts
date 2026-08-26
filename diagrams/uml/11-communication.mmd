@@ -1,0 +1,21 @@
+flowchart LR
+  Player["1 Player"]
+  UI["2 Raid UI"]
+  StartRaid["3 StartRaid"]
+  Raid["4 Raid aggregate"]
+  Chase["5 ChaseService"]
+  GhostScore["6 GhostScoreService"]
+  GhostRepo["7 GhostRepository"]
+  Result["8 Results UI"]
+
+  Player -->|1: select fortress| UI
+  UI -->|2: execute| StartRaid
+  StartRaid -->|3: create| Raid
+  Player -->|4: move and evade| UI
+  UI -->|5: record action| Raid
+  Raid -->|6: detection| Chase
+  Chase -->|7: validate alternative route| Raid
+  Raid -->|8: complete raid| GhostScore
+  GhostScore -->|9: read ghost| GhostRepo
+  GhostScore -->|10: publish result| Result
+  Result -->|11: show score and silhouette| Player

@@ -1,0 +1,64 @@
+classDiagram
+  direction TB
+
+  class Raid {
+    +RaidId id
+    +RaidState state
+    +start()
+    +recordAction(action)
+    +capture()
+    +escape()
+  }
+  class Thief {
+    +MovementKit movementKit
+    +TreasureAmount carriedTreasure
+    +FailureCount failures
+  }
+  class Fortress {
+    +FortressId id
+    +FortressGraph graph
+    +RouteOptions routes
+  }
+  class GhostRun {
+    +ReplayVersion version
+    +ReplayEventList events
+    +GhostScore score
+  }
+  class GhostScore {
+    +ScoreComponent time
+    +ScoreComponent treasure
+    +ScoreComponent failures
+    +CombinedScore combined
+  }
+  class RewardBundle {
+    +TreasureAmount treasure
+    +ReputationAmount reputation
+    +UnlockSet unlocks
+  }
+  class BaseProgression {
+    +StorageCapacity storage
+    +AreaSet areas
+    +AbilitySet abilities
+    +CosmeticSet cosmetics
+  }
+  class GhostScoreService {
+    +calculate(time, treasure, failures) GhostScore
+  }
+  class RaidOutcomeService {
+    +resolveCapture(raid) RaidOutcome
+    +resolveSecondChance(raid) RaidOutcome
+  }
+  class GhostRepository {
+    <<interface>>
+    +read(fortressId) GhostRun
+    +write(run)
+  }
+
+  Raid *-- Thief
+  Raid --> Fortress
+  Raid --> GhostRun
+  GhostRun *-- GhostScore
+  BaseProgression o-- RewardBundle
+  GhostScoreService ..> GhostScore
+  RaidOutcomeService ..> Raid
+  GhostRepository ..> GhostRun

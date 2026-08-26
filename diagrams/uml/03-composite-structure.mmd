@@ -1,0 +1,21 @@
+flowchart TB
+  subgraph RaidAggregate["<<composite structure>> Raid Aggregate"]
+    Raid["Raid"]
+    InputPort(("InputPort"))
+    ClockPort(("ClockPort"))
+    FortressPart["FortressPart"]
+    ThiefPart["ThiefPart"]
+    ChasePart["ChasePart"]
+    GraffitiPart["GraffitiPart"]
+    OutcomePart["OutcomePart"]
+    InputPort --> Raid
+    ClockPort --> Raid
+    Raid --> FortressPart
+    Raid --> ThiefPart
+    Raid --> ChasePart
+    Raid --> GraffitiPart
+    Raid --> OutcomePart
+  end
+  Player["Player Input"] --> InputPort
+  SystemClock["Deterministic Clock"] --> ClockPort
+  OutcomePart --> Result["Raid Result"]
