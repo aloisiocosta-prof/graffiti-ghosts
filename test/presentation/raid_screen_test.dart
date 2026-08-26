@@ -10,7 +10,9 @@ void main() {
     expect(find.text('THE NEON VAULT'), findsOneWidget);
     expect(find.text('ENTER FORTRESS'), findsOneWidget);
 
-    await tester.tap(find.text('ENTER FORTRESS'));
+    final enterButton = find.text('ENTER FORTRESS');
+    await tester.ensureVisible(enterButton);
+    await tester.tap(enterButton);
     await tester.pumpAndSettle();
 
     expect(find.text('NEON VAULT / RAID 01'), findsOneWidget);
@@ -21,7 +23,9 @@ void main() {
 
   testWidgets('movement enters chase and exposes alternative route action', (tester) async {
     await tester.pumpWidget(const GraffitiGhostsApp());
-    await tester.tap(find.text('ENTER FORTRESS'));
+    final enterButton = find.text('ENTER FORTRESS');
+    await tester.ensureVisible(enterButton);
+    await tester.tap(enterButton);
     await tester.pumpAndSettle();
 
     for (var index = 0; index < 5; index++) {
@@ -35,7 +39,9 @@ void main() {
 
   testWidgets('critical raid controls have semantic labels', (tester) async {
     await tester.pumpWidget(const GraffitiGhostsApp());
-    await tester.tap(find.text('ENTER FORTRESS'));
+    final enterButton = find.text('ENTER FORTRESS');
+    await tester.ensureVisible(enterButton);
+    await tester.tap(enterButton);
     await tester.pumpAndSettle();
 
     expect(find.bySemanticsLabel('GRAFFITI'), findsOneWidget);
