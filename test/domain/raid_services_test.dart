@@ -24,7 +24,7 @@ void main() {
   });
 
   test('GHOST-SCORE-002 is independent from economic bonuses', () {
-    var state = infiltration();
+    final state = infiltration();
     final baseScore = scoreService.calculateTotal(state);
     final bonusState = state.copyWith(treasure: state.treasure + 1);
 

@@ -31,9 +31,9 @@ class GraffitiGhostsApp extends StatelessWidget {
         filledButtonTheme: FilledButtonThemeData(
           style: FilledButton.styleFrom(
             backgroundColor: const Color(0xFF25E7FF),
-            foregroundColor: Color(0xFF08101D),
+            foregroundColor: const Color(0xFF08101D),
             minimumSize: const Size(48, 48),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+            shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
           ),
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(

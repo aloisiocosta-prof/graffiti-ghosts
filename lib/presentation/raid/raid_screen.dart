@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../core/config/asset_manifest.dart';
+import '../../core/config/asset_manifest.dart' as assets;
 import '../../domain/entities/raid.dart';
+import '../../domain/services/raid_services.dart';
 import 'raid_controller.dart';
 
 enum RaidScreenStage { selection, raid, results, base }
@@ -121,7 +122,7 @@ class _RaidScreenState extends State<RaidScreen> {
           fit: StackFit.expand,
           children: [
             Image.asset(
-              AssetManifest.fortressKeyArt,
+              assets.AssetManifest.fortressKeyArt,
               fit: BoxFit.cover,
               errorBuilder: (_, __, ___) => const SizedBox.shrink(),
             ),
@@ -258,7 +259,7 @@ class _RaidScreenState extends State<RaidScreen> {
       decoration: BoxDecoration(
         color: const Color(0xCC121034),
         borderRadius: BorderRadius.circular(18),
-        border: Border.all(color: accent.withOpacity(.55)),
+        border: Border.all(color: accent.withValues(alpha: .55)),
       ),
       child: Row(
         children: [
@@ -320,7 +321,7 @@ class _RaidScreenState extends State<RaidScreen> {
           child: Row(
             children: [
               Image.asset(
-                AssetManifest.thiefAnimation,
+                assets.AssetManifest.thiefAnimation,
                 width: 48,
                 height: 48,
                 fit: BoxFit.cover,
@@ -351,7 +352,7 @@ class _RaidScreenState extends State<RaidScreen> {
         decoration: BoxDecoration(
           color: const Color(0xDD121034),
           borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: color.withOpacity(.58)),
+          border: Border.all(color: color.withValues(alpha: .58)),
         ),
         child: Column(
           children: [
@@ -460,7 +461,7 @@ class _RaidScreenState extends State<RaidScreen> {
           onPressed: action,
           style: OutlinedButton.styleFrom(
             foregroundColor: accent,
-            side: BorderSide(color: accent.withOpacity(.82)),
+            side: BorderSide(color: accent.withValues(alpha: .82)),
             backgroundColor: const Color(0xCC121034),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
           ),
@@ -581,7 +582,7 @@ class _RaidScreenState extends State<RaidScreen> {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              Image.asset(AssetManifest.ghostReplay, width: 96, height: 96, fit: BoxFit.cover),
+              Image.asset(assets.AssetManifest.ghostReplay, width: 96, height: 96, fit: BoxFit.cover),
               const SizedBox(height: 12),
               const Text('PERFECT HEIST', style: TextStyle(color: Color(0xFFA9FF2F), fontSize: 32, fontWeight: FontWeight.w900, letterSpacing: 2)),
               const SizedBox(height: 8),
@@ -709,7 +710,7 @@ class _RaidScreenState extends State<RaidScreen> {
               const SizedBox(height: 24),
               Row(
                 children: [
-                  Image.asset(AssetManifest.thiefSheet, width: 104, height: 104, fit: BoxFit.cover),
+                  Image.asset(assets.AssetManifest.thiefSheet, width: 104, height: 104, fit: BoxFit.cover),
                   const SizedBox(width: 16),
                   Expanded(child: _baseSummary(progression)),
                 ],
@@ -768,7 +769,7 @@ class _RaidScreenState extends State<RaidScreen> {
         decoration: BoxDecoration(
           color: const Color(0xCC121034),
           borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: accent.withOpacity(.56)),
+          border: Border.all(color: accent.withValues(alpha: .56)),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -808,7 +809,7 @@ class FortressRaidPainter extends CustomPainter {
     final building = Paint()..color = const Color(0xFF17143E);
     for (var index = 0; index < 9; index++) {
       final x = index * size.width / 8 - 45;
-      final height = 140 + (index % 3) * 58;
+      final double height = 140 + (index % 3) * 58;
       canvas.drawRect(Rect.fromLTWH(x, size.height - height - 72, 150, height), building);
     }
 
