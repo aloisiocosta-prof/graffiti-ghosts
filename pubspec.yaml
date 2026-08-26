@@ -11,9 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons:
-    sdk: flutter
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -25,5 +22,3 @@ flutter:
     - assets/
 
 # Graffiti Ghosts deliberately uses only Dart and Flutter SDK packages in the MVP.
-# The cupertino_icons SDK entry is retained for Flutter template compatibility and
-# may be removed if no Cupertino icon is used.
