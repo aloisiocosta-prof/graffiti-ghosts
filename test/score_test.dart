@@ -1,7 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 
 class RaidScore {
-  const RaidScore({required this.time, required this.treasure, required this.failures});
+  const RaidScore({
+    required this.time,
+    required this.treasure,
+    required this.failures,
+  });
 
   final int time;
   final int treasure;

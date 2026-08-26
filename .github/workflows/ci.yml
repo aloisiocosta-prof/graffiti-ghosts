@@ -27,7 +27,7 @@ jobs:
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             subjects=$(git log --format=%s "${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}")
           else
-            subjects=$(git log --format=%s -n 10)
+            subjects=$(git log --format=%s --no-merges -n 10)
           fi
           pattern='^(feat|fix|refactor|test|docs|chore|build|ci|perf|style|revert)(\([a-z0-9._/-]+\))?!?: .+'
           while IFS= read -r subject; do
