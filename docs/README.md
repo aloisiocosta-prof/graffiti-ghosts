@@ -61,3 +61,5 @@ The traceability matrix now maps these artifacts to GDD sources, implementation 
 ## GDD Master Package
 
 The adapted 13-document GDD package is available under [`gdd/`](gdd/), beginning with [`00-GDD-MASTER-README.md`](gdd/00-GDD-MASTER-README.md). The package is aligned with the current Graffiti Ghosts core loop, vertical slice, native Dart/Flutter dependency constraint, Android/Web/WasmGC targets, Cloudflare deployment, and current open decisions.
+
+GitHub Project capabilities, CLI commands, API prerequisites, unsupported operations, and repository-side fallback automations are documented in [`governance/github-project-capability-matrix.md`](governance/github-project-capability-matrix.md).
