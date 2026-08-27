@@ -45,3 +45,21 @@ Mermaid is not a complete UML 2.x authoring tool. For UML types without a dedica
 ## Validation
 
 Each `.mmd` source should be rendered with the project utility or Mermaid-compatible renderer. Validation must check syntax, readable labels, directionality, and consistency with the technical specification. The traceability matrix is in `traceability-matrix.md`.
+
+## Refactored Context Catalog
+
+The operational context is indexed by [`context-refactor.md`](context-refactor.md), which separates product decisions from research methods, assumptions, risks, and validation gates.
+
+The research source and structured extraction are [`references/deep-research-report.md`](references/deep-research-report.md) and [`research/deep-research-report-extraction.md`](research/deep-research-report-extraction.md).
+
+Governance artifacts are [`governance/agent-orchestration.md`](governance/agent-orchestration.md), [`governance/skill-catalog.md`](governance/skill-catalog.md), [`governance/decision-register.yaml`](governance/decision-register.yaml), and [`governance/risk-register.yaml`](governance/risk-register.yaml).
+
+Design and platform specifications are cataloged in [`specs/README.md`](specs/README.md), including lifecycle, economy, conditional RevenueCat monetization, telemetry, dependency compatibility, and asset metadata.
+
+The traceability matrix now maps these artifacts to GDD sources, implementation targets, tests, Issues, Pull Requests, and status semantics.
+
+## GDD Master Package
+
+The adapted 13-document GDD package is available under [`gdd/`](gdd/), beginning with [`00-GDD-MASTER-README.md`](gdd/00-GDD-MASTER-README.md). The package is aligned with the current Graffiti Ghosts core loop, vertical slice, native Dart/Flutter dependency constraint, Android/Web/WasmGC targets, Cloudflare deployment, and current open decisions.
+
+GitHub Project capabilities, CLI commands, API prerequisites, unsupported operations, and repository-side fallback automations are documented in [`governance/github-project-capability-matrix.md`](governance/github-project-capability-matrix.md).

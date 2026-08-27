@@ -1,0 +1,75 @@
+version: 1
+project: graffiti-ghosts
+risks:
+  - id: RISK-001
+    risk: "Generic research examples are mistaken for Graffiti Ghosts requirements."
+    probability: medium
+    impact: high
+    detection: "A document introduces Shipaton, puzzle-loop, ads, prices, or products without a project decision."
+    mitigation: "Require source labels and decision IDs; keep report as methodological reference."
+    contingency: "Revert the requirement and open a clarification issue."
+    owner: Game Director
+    status: active
+  - id: RISK-002
+    risk: "Web/WasmGC incompatibility enters shared Dart code."
+    probability: medium
+    impact: high
+    detection: "Forbidden import or failed flutter build web --wasm."
+    mitigation: "Use dependency matrix, platform adapters, static analysis, and CI builds."
+    contingency: "Replace the API with an official compatible API or isolate it behind an adapter."
+    owner: Technical Architect
+    status: active
+  - id: RISK-003
+    risk: "Core gameplay becomes dependent on progression or monetization."
+    probability: medium
+    impact: high
+    detection: "The raid is not satisfying or completable without upgrades, purchases, or ads."
+    mitigation: "Test the core loop independently and keep premium systems conditional."
+    contingency: "Remove the dependency from the MVP and rebalance rewards."
+    owner: Game Designer
+    status: active
+  - id: RISK-004
+    risk: "Economy bottleneck or runaway accumulation."
+    probability: medium
+    impact: high
+    detection: "Simulation shows negative progression, unbounded stockpiles, or unclear sinks."
+    mitigation: "Define faucets, sinks, costs, scarcity, and low/median/high-skill simulations."
+    contingency: "Freeze economy implementation and revise the economy specification."
+    owner: Economy Designer
+    status: active
+  - id: RISK-005
+    risk: "Monetization state is trusted locally instead of by an authoritative entitlement."
+    probability: low
+    impact: high
+    detection: "Premium UI unlocks from cached product IDs or duplicate callbacks."
+    mitigation: "Use Product → Entitlement → Feature and idempotent state handling."
+    contingency: "Disable premium access and reconcile from the authoritative provider."
+    owner: Monetization Designer
+    status: blocked-until-approved
+  - id: RISK-006
+    risk: "Asset license or source cannot be proven."
+    probability: medium
+    impact: medium
+    detection: "Asset registry entry has license_status VALIDATION_REQUIRED."
+    mitigation: "Complete asset provenance before release or replace the asset."
+    contingency: "Use approved placeholder or original asset."
+    owner: Asset Producer
+    status: active
+  - id: RISK-007
+    risk: "Telemetry violates privacy or blocks gameplay."
+    probability: low
+    impact: high
+    detection: "Events contain personal data, secrets, or synchronous network dependencies."
+    mitigation: "Schema-first anonymous events and non-blocking emission."
+    contingency: "Disable telemetry and preserve local gameplay behavior."
+    owner: Technical Architect
+    status: active
+  - id: RISK-008
+    risk: "Cloudflare build succeeds with an artifact that is not the intended WasmGC output."
+    probability: low
+    impact: high
+    detection: "Missing build/web/main.dart.wasm or missing COOP/COEP response behavior."
+    mitigation: "Validate artifacts in build.sh and inspect deployed headers."
+    contingency: "Fail deployment and fix the build or Worker configuration."
+    owner: Release Manager
+    status: active

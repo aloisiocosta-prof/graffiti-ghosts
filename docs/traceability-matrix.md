@@ -44,3 +44,35 @@
 | Native-only MVP boundary | C1, C2, C3 | Component, Package, Deployment, Profile |
 | SOLID, ports and adapters | C2, C3, C4 | Component, Class, Package, Profile |
 | TDD and spec-driven workflow | C3, C4 | Activity, Interaction Overview, Sequence |
+
+## Refactored Context Traceability
+
+| Context artifact | Source / decision | Implementation or validation target | Status |
+|---|---|---|---|
+| `docs/research/deep-research-report-extraction.md` | User-provided research report | Process rules, anti-patterns, gates | CREATED |
+| `docs/governance/agent-orchestration.md` | FR-01, FR-02, FR-03; ADR-001, ADR-002 | Issue, PR, and agent handoff workflow | CREATED |
+| `docs/governance/decision-register.yaml` | Client constraints and report-derived decisions | Review gate for design and technical changes | CREATED |
+| `docs/governance/risk-register.yaml` | Report risk patterns and current project risks | Risk review before implementation/release | CREATED |
+| `docs/specs/lifecycle.md` | FR-06; ADR-007 | Lifecycle unit/widget/integration tests | CREATED |
+| `docs/specs/economy.md` | FR-04; ADR-003 | Economy simulation and reward tests | CREATED |
+| `docs/specs/monetization-revenuecat.md` | FR-05; ADR-005 | Conditional RevenueCat adapter and entitlement tests | CREATED / VALIDATION REQUIRED |
+| `docs/specs/telemetry.md` | FR-08; ADR-008 | Schema validation and privacy review | CREATED / VALIDATION REQUIRED |
+| `docs/specs/dependency-matrix.md` | ADR-004, ADR-006 | Static analysis and Android/Web/WasmGC builds | CREATED |
+| `docs/specs/asset-registry.json` | FR-07; existing visual-style guide | Asset provenance, license, and readability review | CREATED / VALIDATION REQUIRED |
+| `docs/context-refactor.md` | All above artifacts | Master context and backlog routing | CREATED |
+
+## Status semantics
+
+`CONFIRMED` means the project has an explicit decision or existing GDD evidence.
+
+`VALIDATION REQUIRED` means the item is intentionally documented but cannot enter implementation without client approval or evidence.
+
+`ASSUMPTION` means a temporary working hypothesis that must not be treated as a requirement.
+
+`NOT APPLICABLE` must include a reason and must not be silently omitted from the GDD.
+
+## References
+
+[DR-1]: references/deep-research-report.md "User-provided deep research report"
+[GG-1]: core-loop-design.md "Graffiti Ghosts core-loop design"
+[GG-2]: ../.agents/skills/graffiti-ghosts-agentic-game-development/SKILL.md "Graffiti Ghosts agentic game-development skill"
